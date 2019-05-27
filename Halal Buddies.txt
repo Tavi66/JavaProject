@@ -1,1 +1,3 @@
-Group project for learning Java.
+Team project for learning Java.
+
+Creating a financial app using Java.
