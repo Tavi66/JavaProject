@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">halalJava</string>
     <string name="action_settings">Settings</string>
+    <string name="start">START</string>
+    <string name="hello_world_fabian">Hello World! Fabian</string>
+    <string name="reset">reset</string>
 </resources>

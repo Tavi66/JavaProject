@@ -8,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private int counter = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        Button addItemButton = findViewById(R.id.startButtonHome);
+        Button removeItemButton = findViewById(R.id.resetHomeButton);
+        final TextView centerText = findViewById(R.id.centerText);
+
+        addItemButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick (View v)
+            {
+                //Code action here.
+                String s = "The count is: " + counter++;
+                centerText.setText(s);
+            }
+        });
+
+        removeItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter = 0;
+                Snackbar.make(v, "Counter is reset!", Snackbar.LENGTH_LONG).setAction("", null).show();
+                String s = "The count is: " + counter;
+                centerText.setText(s);
+
             }
         });
     }
