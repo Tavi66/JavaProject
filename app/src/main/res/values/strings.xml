@@ -4,4 +4,5 @@
     <string name="start">START</string>
     <string name="hello_world_fabian">Hello World! Fabian</string>
     <string name="reset">reset</string>
+    <string name="CreateDB">Create DB</string>
 </resources>

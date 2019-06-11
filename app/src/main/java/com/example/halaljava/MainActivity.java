@@ -10,6 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import com.example.halaljava.database.Expense;
+import com.example.halaljava.database.FinanceBaseHelper;
+import com.example.halaljava.database.Finance;
 
 public class MainActivity extends AppCompatActivity {
     private int counter = 0;
@@ -31,15 +34,24 @@ public class MainActivity extends AppCompatActivity {
 
         Button addItemButton = findViewById(R.id.startButtonHome);
         Button removeItemButton = findViewById(R.id.resetHomeButton);
+        Button createDBButton = findViewById(R.id.createDB);
         final TextView centerText = findViewById(R.id.centerText);
-
+        final Finance finance = new Finance(getApplicationContext());
+        createDBButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+               finance.addExpense(finance.getExpense(new Expense()));
+                Snackbar.make(v, "New row inserted!", Snackbar.LENGTH_LONG).show();
+            }
+        });
         addItemButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick (View v)
             {
                 //Code action here.
-                String s = "The count is: " + counter++;
+                String s = "The count is: " + ++counter;
                 centerText.setText(s);
             }
         });
@@ -48,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 counter = 0;
-                Snackbar.make(v, "Counter is reset!", Snackbar.LENGTH_LONG).setAction("", null).show();
+                Snackbar.make(v, "Counter is reset!", Snackbar.LENGTH_LONG).show();
                 String s = "The count is: " + counter;
                 centerText.setText(s);
 
