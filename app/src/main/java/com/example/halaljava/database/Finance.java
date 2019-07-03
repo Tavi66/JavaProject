@@ -66,11 +66,26 @@ public class Finance {
         Random rand = new java.util.Random();
 //        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.ID, rand.nextInt(50));
         values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.CATEGORY, category);
-        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.DATE, Calendar.getInstance().getTime().toString());
         values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.ITEM, itemTitle);
+        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.DATE, Calendar.getInstance().getTime().toString());
         values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.AMOUNT, itemAmount);
         values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.TYPE, itemType);
         return values;
+    }
+
+    public void deleteDBTest() {
+        FinanceBaseHelper fin = new FinanceBaseHelper(mContext);
+        String s = "DROP TABLE " + FinanceDbSchema.MonthlyExpensesTable.NAME;
+        mDatabase.execSQL(s);
+         s = "CREATE TABLE " + FinanceDbSchema.MonthlyExpensesTable.NAME + "(" +
+                // MonthlyExpensesTable.Cols.ID + ", " +
+                FinanceDbSchema.MonthlyExpensesTable.Cols.ID + " integer primary key autoincrement, " +
+                FinanceDbSchema.MonthlyExpensesTable.Cols.CATEGORY + ", " +
+                FinanceDbSchema.MonthlyExpensesTable.Cols.ITEM + ", " +
+                FinanceDbSchema.MonthlyExpensesTable.Cols.DATE + ", " +
+                FinanceDbSchema.MonthlyExpensesTable.Cols.AMOUNT + ", " +
+                FinanceDbSchema.MonthlyExpensesTable.Cols.TYPE + ")";
+        mDatabase.execSQL(s);
     }
 
     private FinanceCursorWrapper queryFinance(String whereClause, String[] whereArgs) {

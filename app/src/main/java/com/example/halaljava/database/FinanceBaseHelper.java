@@ -34,9 +34,14 @@ public class FinanceBaseHelper extends SQLiteOpenHelper {
                 MonthlyExpensesTable.Cols.TYPE + ")"
         );
     }
-    private void createMonthlyExpensesTable(){
+    public void createMonthlyExpensesTable(){
 
     }
+
+    public String getDatabaseName(){
+        return DATABASE_NAME;
+    }
+
     @Override
     public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion) {
 

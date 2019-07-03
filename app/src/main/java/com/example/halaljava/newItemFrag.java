@@ -105,10 +105,11 @@ public class newItemFrag extends Fragment {
         view.findViewById(R.id.reset_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter = 0;
-                Snackbar.make(v, "Counter is reset!", Snackbar.LENGTH_LONG).show();
-                String s = "The count is: " + counter;
-                setText(s);
+//                counter = 0;
+//                Snackbar.make(v, "Counter is reset!", Snackbar.LENGTH_LONG).show();
+//                String s = "The count is: " + counter;
+//                setText(s);
+                finance.deleteDBTest();
 
             }
         });
@@ -146,7 +147,7 @@ public class newItemFrag extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (count > 0)
-                    finance.setItemTitle(s.toString());
+                    finance.setItemAmount(Double.parseDouble(s.toString()));
             }
 
             @Override
