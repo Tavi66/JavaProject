@@ -11,16 +11,40 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Finance {
-    private static Finance sFinance;
+    private Finance sFinance;
 
     private Context mContext;
     private SQLiteDatabase mDatabase;
+    private static String itemTitle;
+    private static String category;
+    private  static double itemAmount;
+    private static byte itemType;
 
     public Finance() {}
 
     public Finance(Context context){
         mContext = context.getApplicationContext();
         mDatabase = new FinanceBaseHelper(mContext).getWritableDatabase();
+    }
+
+    public byte getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(byte itemType) {
+        Finance.itemType = itemType;
+    }
+
+    public void setItemAmount(double itemAmount) {
+        Finance.itemAmount = itemAmount;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String c) {
+        category = c;
     }
 
     public void addExpense(Expense e) {
@@ -40,13 +64,12 @@ public class Finance {
     public static ContentValues getContentValues (Expense expense) {
         ContentValues values = new ContentValues();
         Random rand = new java.util.Random();
-
 //        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.ID, rand.nextInt(50));
-        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.CATEGORY, "Food");
+        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.CATEGORY, category);
         values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.DATE, Calendar.getInstance().getTime().toString());
-        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.ITEM, "McDonald's");
-        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.AMOUNT, (double) rand.nextInt(250));
-        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.TYPE, 0);
+        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.ITEM, itemTitle);
+        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.AMOUNT, itemAmount);
+        values.put(FinanceDbSchema.MonthlyExpensesTable.Cols.TYPE, itemType);
         return values;
     }
 
@@ -64,4 +87,11 @@ public class Finance {
         return new FinanceCursorWrapper(cursor);
     }
 
+    public String getItemTitle() {
+        return itemTitle;
+    }
+
+    public void setItemTitle(String itemTitle) {
+        this.itemTitle = itemTitle;
+    }
 }

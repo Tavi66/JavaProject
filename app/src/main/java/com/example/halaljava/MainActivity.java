@@ -1,27 +1,35 @@
 package com.example.halaljava;
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.design.widget.TabLayout.OnTabSelectedListener;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.*;
+import android.widget.AdapterView.OnItemSelectedListener;
 import com.example.halaljava.database.Expense;
 import com.example.halaljava.database.FinanceBaseHelper;
 import com.example.halaljava.database.Finance;
 
-public class MainActivity extends FragmentActivity {
-    private int counter = 0;
-    private EditText itemName;
+public class MainActivity extends AppCompatActivity implements newItemFrag.OnFragmentInteractionListener, editItemFrag.OnFragmentInteractionListener, deleteItemFrag.OnFragmentInteractionListener {
+    //private Finance mFinance = new Finance();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -36,37 +44,27 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        Button addItemButton = findViewById(R.id.start_button);
-        Button removeItemButton = findViewById(R.id.reset_button);
-        Button createDBButton = findViewById(R.id.database_button);
-        final TextView centerText = findViewById(R.id.centerText);
-        final Finance finance = new Finance(getApplicationContext());
-        createDBButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-               finance.addExpense(finance.getExpense(new Expense()));
-                Snackbar.make(v, "New row inserted!", Snackbar.LENGTH_LONG).show();
-            }
-        });
-        addItemButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick (View v)
-            {
-                //Code action here.
-                String s = "The count is: " + ++counter;
-                centerText.setText(s);
-            }
-        });
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
 
-        removeItemButton.setOnClickListener(new View.OnClickListener() {
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final PagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addOnTabSelectedListener(new OnTabSelectedListener() {
             @Override
-            public void onClick(View v) {
-                counter = 0;
-                Snackbar.make(v, "Counter is reset!", Snackbar.LENGTH_LONG).show();
-                String s = "The count is: " + counter;
-                centerText.setText(s);
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
             }
         });
@@ -94,11 +92,8 @@ public class MainActivity extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public EditText getItemName() {
-        return itemName;
-    }
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
-    public void setItemName(EditText itemName) {
-        this.itemName = itemName;
     }
 }
