@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             android:background="?android:attr/selectableItemBackground"
+                                             android:clickable="true"
+                                             android:focusable="true"
+                                             android:orientation="vertical"
+                                             android:paddingBottom="16dp"
+                                             android:paddingLeft="16dp"
+                                             android:paddingRight="16dp"
+                                             android:paddingTop="16dp">
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:id="@+id/itemNameDisplay" android:layout_marginTop="0dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="0dp" android:layout_marginStart="0dp" android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" android:layout_alignParentLeft="true"
+            android:textSize="24sp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:id="@+id/categoryDisplay"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="-43dp"
+            app:layout_constraintTop_toBottomOf="@+id/itemNameDisplay" android:layout_below="@+id/dateDisplay"
+            android:layout_alignParentStart="true" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
+            android:layout_alignParentLeft="true" android:textSize="18sp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="75dp"
+            android:layout_height="37dp"
+            android:id="@+id/dateDisplay" app:layout_constraintStart_toEndOf="@+id/categoryDisplay"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/itemNameDisplay" android:layout_below="@+id/itemNameDisplay"
+            android:layout_marginLeft="18dp" android:layout_marginStart="18dp"
+            android:layout_alignParentEnd="true" android:layout_alignParentRight="true"
+            android:layout_marginRight="207dp" android:layout_marginEnd="207dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="83dp"
+            android:layout_height="92dp"
+            android:id="@+id/amountDisplay"
+            android:layout_marginTop="-47dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/typeDisplay"
+            app:layout_constraintStart_toEndOf="@+id/itemNameDisplay"
+            android:layout_marginLeft="17dp" android:layout_marginStart="17dp"
+            app:layout_constraintHorizontal_bias="0.4" android:layout_below="@+id/itemNameDisplay"
+            android:layout_toStartOf="@+id/typeDisplay" android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp" android:layout_toLeftOf="@+id/typeDisplay"
+            android:layout_toEndOf="@+id/itemNameDisplay" android:layout_toRightOf="@+id/itemNameDisplay"
+            android:textSize="24sp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="65dp"
+            android:layout_height="61dp"
+            android:id="@+id/typeDisplay" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp" android:layout_marginEnd="5dp" android:textSize="24sp"
+            android:textStyle="bold"/>
+</RelativeLayout>

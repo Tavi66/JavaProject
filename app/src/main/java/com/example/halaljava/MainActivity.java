@@ -22,10 +22,13 @@ import android.view.MenuItem;
 import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
 import com.example.halaljava.database.Expense;
+import com.example.halaljava.database.FinanceAdapter;
 import com.example.halaljava.database.FinanceBaseHelper;
 import com.example.halaljava.database.Finance;
 
-public class MainActivity extends AppCompatActivity implements newItemFrag.OnFragmentInteractionListener, editItemFrag.OnFragmentInteractionListener, deleteItemFrag.OnFragmentInteractionListener {
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
     //private Finance mFinance = new Finance();
 
     @Override
@@ -92,8 +95,4 @@ public class MainActivity extends AppCompatActivity implements newItemFrag.OnFra
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

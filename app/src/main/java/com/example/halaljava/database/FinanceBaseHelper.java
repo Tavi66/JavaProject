@@ -1,9 +1,12 @@
 package com.example.halaljava.database;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import com.example.halaljava.database.FinanceDbSchema.MonthlyExpensesTable;
+
+import java.util.ArrayList;
 
 public class FinanceBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
@@ -24,18 +27,8 @@ public class FinanceBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Test: Creating monthly expenses table
-        db.execSQL("Create table " + MonthlyExpensesTable.NAME + "(" +
-                // MonthlyExpensesTable.Cols.ID + ", " +
-                MonthlyExpensesTable.Cols.ID + " integer primary key autoincrement, " +
-                MonthlyExpensesTable.Cols.CATEGORY + ", " +
-                MonthlyExpensesTable.Cols.ITEM + ", " +
-                MonthlyExpensesTable.Cols.DATE + ", " +
-                MonthlyExpensesTable.Cols.AMOUNT + ", " +
-                MonthlyExpensesTable.Cols.TYPE + ")"
-        );
-    }
-    public void createMonthlyExpensesTable(){
-
+        db.execSQL(MonthlyExpensesTable.SQL_CREATE);
+        db.execSQL(FinanceDbSchema.walletTable.SQL_CREATE);
     }
 
     public String getDatabaseName(){

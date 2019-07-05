@@ -17,13 +17,13 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
         switch (i)
         {
             case 0:
-                frag = new newItemFrag();
+                //frag = new newItemFrag();
                 break;
             case 1:
-                frag = new editItemFrag();
+                //frag = new editItemFrag();
                 break;
             case 2:
-                frag = new deleteItemFrag();
+                //frag = new deleteItemFrag();
                 break;
             default:
                 break;
