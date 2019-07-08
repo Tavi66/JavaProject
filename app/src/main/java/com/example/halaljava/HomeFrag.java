@@ -36,7 +36,7 @@ public class HomeFrag extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toolbar toolbar = getView().findViewById(R.id.toolbar);
+       // Toolbar toolbar = getView().findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
         recycler = getView().findViewById( R.id.monthlyExpensesView);
