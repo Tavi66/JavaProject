@@ -3,8 +3,14 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.example.halaljava.MainActivity">
     <item
+            android:id="@+id/action_favorite"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/edit_item"
+            app:showAsAction="ifRoom"/>
+    <item
             android:id="@+id/action_settings"
             android:title="@string/action_settings"
             android:orderInCategory="100"
             app:showAsAction="never"/>
+
 </menu>
