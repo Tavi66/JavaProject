@@ -5,15 +5,19 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v13.view.DragStartHelper;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 import com.example.halaljava.database.Expense;
 import com.example.halaljava.database.Finance;
 import com.example.halaljava.database.FinanceAdapter;
@@ -97,13 +101,32 @@ public class editItemFrag extends Fragment {
         ArrayList<Expense> arrayList = finance.getMonthlyExpenses();
         recycler = getView().findViewById( R.id.monthlyExpensesView);
         financeAdapter = new FinanceAdapter(arrayList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false);
 
         recycler.setLayoutManager(mLayoutManager);
-        recycler.setItemAnimator( new DefaultItemAnimator());
+        //recycler.setItemAnimator( new DefaultItemAnimator());
         recycler.setAdapter(financeAdapter);
-        recycler.addItemDecoration(new DividerItemDecoration(getContext(),LinearLayoutManager.VERTICAL));
+        //recycler.addItemDecoration(new DividerItemDecoration(getContext(),LinearLayoutManager.VERTICAL));
         financeAdapter.notifyDataSetChanged();
+        SwipeController swipeController = new SwipeController();
+//        ItemTouchHelperAdapter mAdapter = new ItemTouchHelperAdapter() {
+//            @Override
+//            public void onItemMove(int fromPosition, int toPosition) {
+//
+//            }
+//
+//            @Override
+//            public void onItemDismiss(int position) {
+//
+//            }
+//        };
+//        ItemTouchHelper.Callback callback =
+//                new SwipeController(financeAdapter);
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+        itemTouchhelper.attachToRecyclerView(recycler);
+
     }
 
         // TODO: Rename method, update argument and hook method into UI event

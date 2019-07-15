@@ -121,7 +121,6 @@ public class newItemFrag extends Fragment {
                     itemNameText.setText(null);
                     finance.setItemTitle(itemNameText.getText().toString());
                     finance.setItemAmount(0);
-
                 }
                 else
                     Snackbar.make(v, "Missing data!", Snackbar.LENGTH_LONG).show();
